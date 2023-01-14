@@ -24,7 +24,7 @@ class Record(models.Model):
     catalog_number = models.PositiveIntegerField(primary_key=True)
     artist = models.ForeignKey("Artist", on_delete=models.PROTECT)
     title = models.CharField(null=False, blank=False, max_length=255)
-    can_con = models.BooleanField(verbose_name="CanCon")
+    can_con = models.BooleanField(verbose_name="CanCon", default=False)
     genres = models.ManyToManyField("Genre")
     styles = models.ManyToManyField("Style", blank=True)
     release_year = models.PositiveIntegerField(blank=True, null=True)
