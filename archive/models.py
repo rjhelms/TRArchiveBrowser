@@ -18,6 +18,7 @@ class NameModel(models.Model):
     
     class Meta: 
         abstract = True
+        ordering = ['name']
 
 class Record(models.Model):
     catalog_number = models.PositiveIntegerField(primary_key=True)
