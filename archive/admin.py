@@ -9,6 +9,7 @@ class RecordAdmin(admin.ModelAdmin):
     list_display_links = "catalog_number", "title"
     list_filter = (
         "genres",
+        "styles",
         "type",
     )
 

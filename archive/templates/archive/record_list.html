@@ -6,30 +6,34 @@
             <th scope="col">Cat #</th>
             <th scope="col">Artist</th>
             <th scope="col">Title</th>
+            <th scope="col">CanCon</th>
             <th scope="col">Genres</th>
             <th scope="col">Styles</th>
             <th scope="col">Year</th>
             <th scope="col">Label</th>
+            <th scope="col">Type</th>
         </tr>
     </thead>
     <tbody>
 {% for record in object_list %}
         <tr>
             <th scope="row">{{record.catalog_number}}</td>
-            <td>{{record.artist}}</td>
+            <td><a href="{% url 'artist-record-list' slug=record.artist.slug %}">{{record.artist}}</a></td>
             <td>{{record.title}}</td>
+            <td>{{record.can_con}}</td>
             <td>
                 {% for genre in record.genres.all %}
-                {{genre}}{% if not forloop.last  %}, {% endif %}
+                <a href="{% url 'genre-record-list' slug=genre.slug %}">{{genre}}</a>{% if not forloop.last  %}, {% endif %}
                 {% endfor %}
             </td>
             <td>
                 {% for style in record.styles.all %}
-                {{style}}{% if not forloop.last  %}, {% endif %}
+                <a href="{% url 'style-record-list' slug=style.slug %}">{{style}}</a>{% if not forloop.last  %}, {% endif %}
                 {% endfor %}
             </td>
-            <td>{{record.release_year}}</td>
-            <td>{% if record.label %}{{record.label}}{% endif %}</td>
+            <td>{% if record.release_year %}{{record.release_year}}{% endif %}</td>
+            <td>{% if record.label %}<a href="{% url 'label-record-list' slug=record.label.slug %}">{{record.label}}</a>{% endif %}</td>
+            <td>{{record.type}}</td>
         </tr>
 {% endfor %}
     </tbody>
