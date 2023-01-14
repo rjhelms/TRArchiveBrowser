@@ -1,0 +1,5 @@
+db.sqlite3
+*.pyc
+.vscode
+
+TRArchiveBrowser/settings_secret.py
