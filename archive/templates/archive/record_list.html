@@ -20,7 +20,12 @@
             <th scope="row">{{record.catalog_number}}</td>
             <td><a href="{% url 'artist-record-list' slug=record.artist.slug %}">{{record.artist}}</a></td>
             <td>{{record.title}}</td>
-            <td>{{record.can_con}}</td>
+            <td>{% if record.can_con %}
+                <i class="fa-solid fa-circle-check text-success"></i> Yes
+                {% else %}  
+                <i class="fa-solid fa-circle-xmark text-danger"></i> No
+                {% endif %}
+            </td>
             <td>
                 {% for genre in record.genres.all %}
                 <a href="{% url 'genre-record-list' slug=genre.slug %}">{{genre}}</a>{% if not forloop.last  %}, {% endif %}
